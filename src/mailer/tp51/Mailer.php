@@ -10,7 +10,7 @@
 
 namespace mailer\tp51;
 
-use think\View;
+use think\facade\View;
 use think\facade\Config as ThinkConfig;
 
 /**
@@ -30,7 +30,7 @@ class Mailer extends \mailer\lib\Mailer
      */
     public function view($template, $param = [], $config = [])
     {
-        $view = View::instance(ThinkConfig::get('template'), ThinkConfig::get('view_replace_str'));
+        $view = View::instance(ThinkConfig::get('template'));
         // 处理变量中包含有对元数据嵌入的变量
         foreach ($param as $k => $v) {
             $this->embedImage($k, $v, $param);
